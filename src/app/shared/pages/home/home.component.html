@@ -1,1 +1,36 @@
-<p>home works!</p>
+<swiper [config]="featuredCarousel" *ngIf="nowPlaying$ | async as nowPlaying">
+    <div *ngFor="let movie of nowPlaying.results">
+        <app-movie-jumbotron [movie]="movie"></app-movie-jumbotron>
+    </div>
+
+</swiper>
+
+<div class="container mb-5 pt-5 pb-5" *ngIf="popularMovies$ | async as popularMovies">
+    <h3>Populares</h3>
+
+    <div class="row">
+        <div class="col-6 col-md-3" *ngFor="let movie of popularMovies.results">
+            <app-movie-item [movie]="movie"></app-movie-item>
+        </div>
+    </div>
+</div>
+
+<div class="container mb-5 pt-5 pb-5" *ngIf="topRatedMovies$ | async as topRatedMovies">
+    <h3>Mejor puntuadas</h3>
+
+    <div class="row">
+        <div class="col-6 col-md-3" *ngFor="let movie of topRatedMovies.results">
+            <app-movie-item [movie]="movie"></app-movie-item>
+        </div>
+    </div>
+</div>
+
+<div class="container mb-5 pt-5 pb-5">
+    <h3>Géneros</h3>
+
+    <div class="row">
+        <div class="col-6 col-md-3">
+            <button class="btn btn-primary">Nombre del genero</button>
+        </div>
+    </div>
+</div>

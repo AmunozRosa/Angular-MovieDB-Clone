@@ -1,0 +1,10 @@
+:host {
+  .image-container {
+    display: block;
+  }
+
+  .card-text {
+    max-height: 50px;
+    overflow: hidden;
+  }
+}
