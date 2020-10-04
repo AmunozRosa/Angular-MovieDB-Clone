@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { Observable } from 'rxjs';
-import { MoviesService } from '../../services/movies.service';
+import { MoviesService } from '../../shared/services/movies.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import { MoviesService } from '../../services/movies.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private movieService: MoviesService) {}
+  constructor(private movieService: MoviesService, private router: Router) {}
 
   public featuredCarousel: SwiperConfigInterface = {
     observer: true,
@@ -29,28 +30,31 @@ export class HomeComponent implements OnInit {
       el: '.swiper-pagination',
       clickable: true,
     },
-    centeredSlides: true,
-    loop: true,
+    centeredSlides: false,
+    loop: false,
     roundLengths: true,
     slidesOffsetBefore: 0,
     slidesOffsetAfter: 0,
     spaceBetween: 0,
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-      },
-    },
   };
 
   latestMovie$: Observable<any>;
   popularMovies$: Observable<any>;
   topRatedMovies$: Observable<any>;
   nowPlaying$: Observable<any>;
+  genres$: Observable<any>;
 
   ngOnInit(): void {
     this.latestMovie$ = this.movieService.getLatestMovie();
     this.popularMovies$ = this.movieService.getPopularMovies();
     this.topRatedMovies$ = this.movieService.getTopRatedMovies();
     this.nowPlaying$ = this.movieService.getNowPlayingMovies();
+    this.genres$ = this.movieService.getGenders();
+  }
+
+  navigateToGenre(genreName) {
+    this.router.navigate(['/search-results'], {
+      queryParams: { search: genreName },
+    });
   }
 }

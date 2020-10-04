@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/home']" routerLinkActive="router-link-active">Portada<span
                             class="sr-only">(current)</span></a>
                 </li>
@@ -24,6 +24,13 @@
                     </div>
                 </li>
             </ul>
+
+            <form class="form-inline my-2 my-lg-0" [formGroup]="searchForm">
+                <input formControlName="searchInput" class="form-control mr-2" type="text"
+                    placeholder="Buscar películas">
+                <button class="btn btn-outline-success my-2 my-sm-0" [class.disabled]="!searchForm.valid"
+                    (click)="navigateToSearch()" type="submit">Buscar</button>
+            </form>
 
         </div>
     </div>

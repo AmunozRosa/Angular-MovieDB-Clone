@@ -1,0 +1,9 @@
+:host {
+  .nav-item {
+    .nav-link {
+      &.router-link-active {
+        color: rgba(255, 255, 255, 1);
+      }
+    }
+  }
+}

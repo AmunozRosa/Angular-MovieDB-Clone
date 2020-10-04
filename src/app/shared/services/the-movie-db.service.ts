@@ -18,6 +18,10 @@ export class TheMovieDBService {
     return `${this.URL}movie/popular`;
   }
 
+  getMovieDetailEndpoint(uuid: number) {
+    return `${this.URL}movie/${uuid}`;
+  }
+
   getTopRatedMoviesEndpoint() {
     return `${this.URL}movie/top_rated`;
   }
@@ -28,6 +32,10 @@ export class TheMovieDBService {
 
   getGendersEndpoint() {
     return `${this.URL}genre/movie/list`;
+  }
+
+  getSearchMoviesResults() {
+    return `${this.URL}search/movie/`;
   }
 
   getParams() {
