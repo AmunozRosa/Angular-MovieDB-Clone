@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { MoviesService } from 'src/app/shared/services/movies.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { MoviesService } from 'src/app/shared/services/movies.service';
   styleUrls: ['./search-results.component.scss'],
 })
 export class SearchResultsComponent implements OnInit {
-  public results$;
+  public search$: Observable<any>;
 
   constructor(
     private moviesService: MoviesService,
@@ -20,8 +21,8 @@ export class SearchResultsComponent implements OnInit {
   }
 
   onSearch() {
-    this.results$ = this.moviesService.onSearchMovies(
-      this.route.snapshot.queryParams['search']
-    );
+    this.route.queryParams.subscribe((queryParams) => {
+      this.search$ = this.moviesService.onSearchMovies(queryParams.search);
+    });
   }
 }

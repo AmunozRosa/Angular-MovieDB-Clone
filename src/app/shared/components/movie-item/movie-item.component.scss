@@ -28,6 +28,20 @@
         top: 0;
         left: 0;
       }
+
+      .no-poster {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        font-weight: 700;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+      }
     }
     .card-title {
       font-weight: 700;

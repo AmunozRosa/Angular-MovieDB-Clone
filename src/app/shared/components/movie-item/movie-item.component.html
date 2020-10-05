@@ -1,12 +1,14 @@
 <div class="card" (click)="goToMovieDetail(movie.id)">
     <div class="image-container">
+        <ng-container *ngIf="movie.poster_path; else noPoster">
+            <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" alt="{{movie.title}}">
+        </ng-container>
+        <ng-template #noPoster>
+            <div class="no-poster">
+                No hay imagen disponible
+            </div>
 
-        <img *ngIf="movie.poster_path else noPoster" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}"
-            alt="{{movie.title}}">
-
-        <div #noPoster>
-            No hay imagen disponible
-        </div>
+        </ng-template>
 
     </div>
 
