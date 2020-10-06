@@ -9,6 +9,7 @@
     position: relative;
     top: 0px;
     width: 100%;
+    overflow: hidden;
     &:hover {
       cursor: pointer;
       top: -5px;

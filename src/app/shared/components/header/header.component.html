@@ -15,9 +15,9 @@
                 </li>
 
 
-                <li ngbDropdown class="d-inline-block">
-                    <button class="btn btn-outline-light" id="dropdownBasic1" ngbDropdownToggle>Peliculas</button>
-                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <li ngbDropdown class="nav-item">
+                    <a class="nav-link" id="filmsDropdown" ngbDropdownToggle>Películas</a>
+                    <div ngbDropdownMenu aria-labelledby="filmsDropdown">
 
                         <a ngbDropdownItem [routerLink]="['/premieres']"
                             routerLinkActive="router-link-active">Estrenos</a>
@@ -28,7 +28,7 @@
             <form class="form-inline my-2 my-lg-0" [formGroup]="searchForm">
                 <input formControlName="searchInput" class="form-control mr-2" type="text"
                     placeholder="Buscar películas">
-                <button class="btn btn-outline-success my-2 my-sm-0" [class.disabled]="!searchForm.valid"
+                <button class="btn btn-outline-light my-2 my-sm-0" [class.disabled]="!searchForm.valid"
                     (click)="navigateToSearch()" type="submit">Buscar</button>
             </form>
 

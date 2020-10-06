@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MoviesService } from 'src/app/shared/services/movies.service';
 
@@ -10,10 +10,12 @@ import { MoviesService } from 'src/app/shared/services/movies.service';
 })
 export class SearchResultsComponent implements OnInit {
   public search$: Observable<any>;
+  public currentPage: number;
 
   constructor(
     private moviesService: MoviesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -22,7 +24,18 @@ export class SearchResultsComponent implements OnInit {
 
   onSearch() {
     this.route.queryParams.subscribe((queryParams) => {
-      this.search$ = this.moviesService.onSearchMovies(queryParams.search);
+      this.search$ = this.moviesService.onSearchMovies(
+        queryParams.search,
+        queryParams.page
+      );
+    });
+  }
+
+  goToPage(page) {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { page: page },
+      queryParamsHandling: 'merge',
     });
   }
 }

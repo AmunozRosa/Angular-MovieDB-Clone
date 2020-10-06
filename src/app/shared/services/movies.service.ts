@@ -52,12 +52,13 @@ export class MoviesService {
     return this.http.get(url, { params });
   }
 
-  onSearchMovies(search) {
+  onSearchMovies(search: string, page: number) {
     const url = this.theMovieDBService.getSearchMoviesResults();
     const params: any = {
       ...this.theMovieDBService.getParams(),
       query: search,
-      include_adult: true,
+      page: page,
+      include_adult: false,
     };
 
     return this.http.get(url, { params });

@@ -6,11 +6,16 @@
 </swiper>
 
 <div class="container mb-5 pt-5 pb-5" *ngIf="popularMovies$ | async as popularMovies">
-    <h2>Populares</h2>
+    <h2>últimas películas populares</h2>
 
-    <div class="row">
-        <div class="col-6 col-md-3" *ngFor="let movie of popularMovies.results">
+    <div class="row justify-content-end">
+        <div class="col-6 col-md-3" *ngFor="let movie of popularMovies.results | slice:0:4; let i = index">
             <app-movie-item [movie]="movie"></app-movie-item>
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-auto">
+            <button class="btn btn-dark btn-lg">Ver todas</button>
         </div>
     </div>
 </div>
@@ -18,9 +23,15 @@
 <div class="container mb-5 pt-5 pb-5" *ngIf="topRatedMovies$ | async as topRatedMovies">
     <h2>Mejor puntuadas</h2>
 
-    <div class="row">
-        <div class="col-6 col-md-3" *ngFor="let movie of topRatedMovies.results">
+    <div class="row ">
+        <div class="col-6 col-md-3" *ngFor="let movie of topRatedMovies.results | slice:0:4; let i = index">
             <app-movie-item [movie]="movie"></app-movie-item>
+        </div>
+    </div>
+
+    <div class="row justify-content-end">
+        <div class="col-auto">
+            <button class="btn btn-dark btn-lg">Ver todas</button>
         </div>
     </div>
 </div>
@@ -31,7 +42,8 @@
 
         <div class="row">
             <div class="col-6 col-md-3 mb-3" *ngFor="let genre of genres.genres">
-                <button (click)="navigateToGenre(genre.name)" class="btn btn-primary btn-block">{{genre.name}}</button>
+                <button (click)="navigateToGenre(genre.name)"
+                    class="btn btn-outline-dark btn-block">{{genre.name}}</button>
             </div>
         </div>
     </div>

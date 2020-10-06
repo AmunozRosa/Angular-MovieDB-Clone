@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
     const searchValue = this.searchForm.get('searchInput').value;
     this.router.navigate(['/search-results'], {
       relativeTo: this.route,
-      queryParams: { search: searchValue },
+      queryParams: { search: searchValue, page: 1 },
       queryParamsHandling: 'merge',
     });
   }
