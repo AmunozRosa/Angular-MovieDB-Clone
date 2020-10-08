@@ -1,0 +1,7 @@
+:host {
+  .container-fluid {
+    &:nth-child(odd) {
+      background-color: rgba(var(--color-primary), 0.1);
+    }
+  }
+}

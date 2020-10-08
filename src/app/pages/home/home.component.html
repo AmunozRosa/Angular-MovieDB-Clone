@@ -5,35 +5,41 @@
 
 </swiper>
 
-<div class="container mb-5 pt-5 pb-5" *ngIf="popularMovies$ | async as popularMovies">
-    <h2 class="subsection-title">Últimas películas populares</h2>
+<div class="container-fluid mb-5 pt-5 pb-5" *ngIf="popularMovies$ | async as popularMovies">
+    <div class="container">
+        <h2 class="subsection-title">Últimas películas populares</h2>
 
-    <div class="row justify-content-end">
-        <div class="col-6 col-md-3" *ngFor="let movie of popularMovies.results | slice:0:4; let i = index">
-            <app-movie-item [movie]="movie"></app-movie-item>
+        <div class="row justify-content-end">
+            <div class="col-6 col-md-3" *ngFor="let movie of popularMovies.results | slice:0:4; let i = index">
+                <app-movie-item [movie]="movie"></app-movie-item>
+            </div>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col-auto">
+                <button class="btn btn-dark btn-lg">Ver todas</button>
+            </div>
         </div>
     </div>
-    <div class="row justify-content-end">
-        <div class="col-auto">
-            <button class="btn btn-dark btn-lg">Ver todas</button>
-        </div>
-    </div>
+
 </div>
 
-<div class="container mb-5 pt-5 pb-5" *ngIf="topRatedMovies$ | async as topRatedMovies">
-    <h2 class="subsection-title">Mejor puntuadas</h2>
+<div class="container-fluid mb-5 pt-5 pb-5" *ngIf="topRatedMovies$ | async as topRatedMovies">
+    <div class="container">
+        <h2 class="subsection-title">Mejor puntuadas</h2>
 
-    <div class="row ">
-        <div class="col-6 col-md-3" *ngFor="let movie of topRatedMovies.results | slice:0:4; let i = index">
-            <app-movie-item [movie]="movie"></app-movie-item>
+        <div class="row ">
+            <div class="col-6 col-md-3" *ngFor="let movie of topRatedMovies.results | slice:0:4; let i = index">
+                <app-movie-item [movie]="movie"></app-movie-item>
+            </div>
+        </div>
+
+        <div class="row justify-content-end">
+            <div class="col-auto">
+                <button class="btn btn-dark btn-lg">Ver todas</button>
+            </div>
         </div>
     </div>
 
-    <div class="row justify-content-end">
-        <div class="col-auto">
-            <button class="btn btn-dark btn-lg">Ver todas</button>
-        </div>
-    </div>
 </div>
 
 <div class="container-fluid mb-5 pt-5 pb-5" *ngIf="genres$ | async as genres">
