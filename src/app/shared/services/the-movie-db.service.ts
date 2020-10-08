@@ -38,6 +38,10 @@ export class TheMovieDBService {
     return `${this.URL}search/movie/`;
   }
 
+  getSimilarMoviesResults(id) {
+    return `${this.URL}movie/${id}/similar`;
+  }
+
   getParams() {
     return {
       api_key: this.API_KEY,

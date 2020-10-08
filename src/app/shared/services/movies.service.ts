@@ -52,6 +52,12 @@ export class MoviesService {
     return this.http.get(url, { params });
   }
 
+  getSimilar(id, page) {
+    const url = this.theMovieDBService.getSimilarMoviesResults(id);
+    const params = { ...this.theMovieDBService.getParams(), page: page };
+    return this.http.get(url, { params });
+  }
+
   onSearchMovies(search: string, page: number) {
     const url = this.theMovieDBService.getSearchMoviesResults();
     const params: any = {

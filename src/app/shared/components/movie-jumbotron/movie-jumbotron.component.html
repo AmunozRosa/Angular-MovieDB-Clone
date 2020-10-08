@@ -4,7 +4,7 @@
             <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" alt="{{movie.title}}">
         </div>
         <div class="movie-data">
-            <h1 class="display-4">{{movie.title}}</h1>
+            <h1 class="title">{{movie.title}}</h1>
             <p class="lead">{{movie.overview}}</p>
             <p>{{movie.release_date | date:'dd-MM-yyyy'}}</p>
             <hr class="my-4">
@@ -12,8 +12,6 @@
             <button (click)="goToMovieDetail(movie.id)" class="btn btn-outline-light btn-lg" role="button">Ver
                 más</button>
         </div>
-
-
     </div>
     <img class="backdrop" src="https://image.tmdb.org/t/p/w500{{movie.backdrop_path}}" alt="">
 </div>

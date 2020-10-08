@@ -1,0 +1,10 @@
+body {
+  margin-top: 55px;
+  font-family: 'Source Sans Pro', sans-serif;
+
+  .subsection-title {
+    font-weight: 900;
+    margin-bottom: 2rem;
+    color: rgba(var(--color-primary), 1);
+  }
+}
