@@ -1,7 +1,7 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
     <div class="container">
         <a class="navbar-brand" [routerLink]="['/home']">
-            <img src="/assets/logo.svg" alt="">
+            <img src="/assets/images/logo.svg" alt="The Movie DB Clone">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,6 +26,19 @@
                     </div>
                 </li>
             </ul>
+
+            <ul class="navbar-nav ml-auto mr-2">
+                <li ngbDropdown class="nav-item">
+                    <a class="nav-link" id="filmsDropdown" ngbDropdownToggle>{{"GLOBALS.LANGUAGE" |translate}}</a>
+                    <div ngbDropdownMenu aria-labelledby="filmsDropdown">
+                        <a ngbDropdownItem (click)="setLanguage(language.code)"
+                            *ngFor="let language of avalaibleLanguages">
+                            {{language.name}}
+                        </a>
+                    </div>
+                </li>
+            </ul>
+
 
             <form class="form-inline my-2 my-lg-0" [formGroup]="searchForm">
                 <input formControlName="searchInput" class="form-control mr-2" type="text"

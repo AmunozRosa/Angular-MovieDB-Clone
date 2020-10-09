@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { LanguageService } from 'src/app/shared/services/language.service';
 import { MoviesService } from 'src/app/shared/services/movies.service';
 
 @Component({
@@ -14,19 +16,20 @@ export class SearchResultsComponent implements OnInit {
 
   constructor(
     private moviesService: MoviesService,
+    private languageService: LanguageService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.onSearch();
-  }
-
-  onSearch() {
     this.route.queryParams.subscribe((queryParams) => {
-      this.search$ = this.moviesService.onSearchMovies(
-        queryParams.search,
-        queryParams.page
+      this.search$ = this.languageService.lang$.pipe(
+        switchMap(() =>
+          this.moviesService.onSearchMovies(
+            queryParams.search,
+            queryParams.page
+          )
+        )
       );
     });
   }

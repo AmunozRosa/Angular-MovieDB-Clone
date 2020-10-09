@@ -1,0 +1,31 @@
+{
+  "GLOBALS": {
+    "LANGUAGE": "Idioma"
+  },
+  "HOME": {
+    "LAST_POPULAR_MOVIES": "Últimas películas populares",
+    "BEST_SCORED_MOVIES": "Mejor puntuadas históricamente",
+    "GENRES": "Géneros"
+  },
+  "GENRES": {
+    "ACTION": "Acción",
+    "ADVENTURES": "Aventuras",
+    "ANIMATION": "Animación",
+    "COMEDY": "Comedia",
+    "CRIME": "Crimen",
+    "DOCUMENTAL": "Documental",
+    "DRAMA": "Drama",
+    "FAMILIAR": "Familia",
+    "FANTASY": "Fantasía",
+    "HISTORY": "Historia",
+    "TERROR": "Terror",
+    "MUSIC": "Musical",
+    "MISTERY": "Misterio",
+    "ROMANCE": "Romance",
+    "SCYFY": "Ciencia ficción",
+    "TV_MOVIE": "Película de TV",
+    "THRILLER": "Suspense",
+    "WAR": "Bélica",
+    "WESTERN": "Western"
+  }
+}

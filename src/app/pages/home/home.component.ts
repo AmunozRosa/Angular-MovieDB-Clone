@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { LanguageService } from 'src/app/shared/services/language.service';
 import { MoviesService } from '../../shared/services/movies.service';
 
 @Component({
@@ -10,7 +12,11 @@ import { MoviesService } from '../../shared/services/movies.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private movieService: MoviesService, private router: Router) {}
+  constructor(
+    private movieService: MoviesService,
+    private languageService: LanguageService,
+    private router: Router
+  ) {}
 
   public featuredCarousel: SwiperConfigInterface = {
     observer: true,
@@ -38,18 +44,32 @@ export class HomeComponent implements OnInit {
     spaceBetween: 0,
   };
 
-  latestMovie$: Observable<any>;
-  popularMovies$: Observable<any>;
-  topRatedMovies$: Observable<any>;
-  nowPlaying$: Observable<any>;
-  genres$: Observable<any>;
+  latestMovie$: Observable<{}>;
+  popularMovies$: Observable<{}>;
+  topRatedMovies$: Observable<{}>;
+  nowPlaying$: Observable<{}>;
+  genres$: Observable<{}>;
 
   ngOnInit(): void {
-    this.latestMovie$ = this.movieService.getLatestMovie();
-    this.popularMovies$ = this.movieService.getPopularMovies();
-    this.topRatedMovies$ = this.movieService.getTopRatedMovies();
-    this.nowPlaying$ = this.movieService.getNowPlayingMovies();
-    this.genres$ = this.movieService.getGenders();
+    this.latestMovie$ = this.languageService.lang$.pipe(
+      switchMap(() => this.movieService.getLatestMovie())
+    );
+
+    this.popularMovies$ = this.languageService.lang$.pipe(
+      switchMap(() => this.movieService.getPopularMovies())
+    );
+
+    this.topRatedMovies$ = this.languageService.lang$.pipe(
+      switchMap(() => this.movieService.getTopRatedMovies())
+    );
+
+    this.nowPlaying$ = this.languageService.lang$.pipe(
+      switchMap(() => this.movieService.getNowPlayingMovies())
+    );
+
+    this.genres$ = this.languageService.lang$.pipe(
+      switchMap(() => this.movieService.getGenders())
+    );
   }
 
   navigateToGenre(genreName) {

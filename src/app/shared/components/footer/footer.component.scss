@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  background-color: rgba(var(--color-primary), 1);
+  padding: 1rem 0;
+  .container {
+    .logo {
+      width: 100%;
+      max-width: 100px;
+    }
+  }
+}

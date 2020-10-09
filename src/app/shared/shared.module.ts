@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateModule } from '@ngx-translate/core';
 import { FooterComponent } from './components/footer/footer.component';
 //Components
 import { HeaderComponent } from './components/header/header.component';
@@ -18,12 +19,14 @@ import { MovieJumbotronComponent } from './components/movie-jumbotron/movie-jumb
   ],
   imports: [
     CommonModule,
+    TranslateModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
     NgbModule,
   ],
   exports: [
+    TranslateModule,
     HeaderComponent,
     FooterComponent,
     MovieItemComponent,

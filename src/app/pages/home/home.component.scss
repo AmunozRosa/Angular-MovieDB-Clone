@@ -1,6 +1,9 @@
 :host {
+  .featured-carousel {
+    background-color: rgba(var(--color-primary), 1);
+  }
   .container-fluid {
-    &:nth-child(odd) {
+    &:nth-child(even) {
       background-color: rgba(var(--color-primary), 0.1);
     }
   }

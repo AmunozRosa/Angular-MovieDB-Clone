@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
+import { LanguageService } from './language.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TheMovieDBService {
-  constructor() {}
+  constructor(private languageService: LanguageService) {}
 
   API_KEY = '904d6f3f6d1aad253adc5af6888ff2a7';
-  LANG = 'es-ES';
   URL = 'https://api.themoviedb.org/3/';
 
   getLatestMovieEndpoint() {
@@ -45,7 +45,7 @@ export class TheMovieDBService {
   getParams() {
     return {
       api_key: this.API_KEY,
-      language: this.LANG,
+      language: this.languageService.lang$.getValue(),
     };
   }
 

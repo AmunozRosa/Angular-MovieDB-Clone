@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { LanguageService } from 'src/app/shared/services/language.service';
 import { MoviesService } from '../../shared/services/movies.service';
 
 @Component({
@@ -14,15 +16,20 @@ export class MovieDetailComponent implements OnInit {
 
   constructor(
     private movieService: MoviesService,
+    private languageService: LanguageService,
     private route: ActivatedRoute
   ) {}
 
   private getMovieDetail(movieId) {
-    this.movieDetail$ = this.movieService.getMovieDetail(movieId);
+    this.movieDetail$ = this.languageService.lang$.pipe(
+      switchMap(() => this.movieService.getMovieDetail(movieId))
+    );
   }
 
   getSimilarMovies(movieId) {
-    this.similarMovies$ = this.movieService.getSimilar(movieId, 1);
+    this.similarMovies$ = this.languageService.lang$.pipe(
+      switchMap(() => this.movieService.getSimilar(movieId, 1))
+    );
   }
 
   ngOnInit(): void {
