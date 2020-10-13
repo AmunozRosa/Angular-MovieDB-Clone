@@ -11,8 +11,9 @@
                 <p>{{movie.release_date | date:'dd-MM-yyyy'}}</p>
                 <hr class="my-4">
 
-                <button (click)="goToMovieDetail(movie.id)" class="btn btn-outline-light btn-lg" role="button">Ver
-                    más</button>
+                <button (click)="goToMovieDetail(movie.id)" class="btn btn-outline-light btn-lg" role="button">
+                    {{"ACTIONS.SEE_MORE" |translate}}
+                </button>
             </div>
         </div>
 

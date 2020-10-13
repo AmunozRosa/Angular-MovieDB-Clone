@@ -1,11 +1,15 @@
 {
   "GLOBALS": {
-    "LANGUAGE": "Idioma"
+    "LANGUAGE": "Language"
+  },
+  "ACTIONS": {
+    "SEE_ALL": "See all",
+    "SEE_MORE": "See more"
   },
   "HOME": {
-    "LAST_POPULAR_MOVIES": "Últimas películas populares",
-    "BEST_SCORED_MOVIES": "Mejor puntuadas históricamente",
-    "GENRES": "Géneros"
+    "LAST_POPULAR_MOVIES": "Last popular movies",
+    "BEST_SCORED_MOVIES": "Best scored movies",
+    "GENRES": "Genres"
   },
   "GENRES": {
     "ACTION": "Acción",

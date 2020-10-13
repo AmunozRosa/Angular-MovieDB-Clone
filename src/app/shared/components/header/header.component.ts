@@ -19,10 +19,9 @@ export class HeaderComponent implements OnInit {
   public genres$;
   public searchForm: FormGroup;
   public searchParams: string = this.route.snapshot.queryParams['search'];
-  public avalaibleLanguages;
+  public avalaibleLanguages = this.language.avalaibleLanguages;
 
   ngOnInit(): void {
-    this.avalaibleLanguages = this.language.avalaibleLanguages;
     this.genres$ = this.genresService.getGenres();
 
     this.searchForm = new FormGroup({

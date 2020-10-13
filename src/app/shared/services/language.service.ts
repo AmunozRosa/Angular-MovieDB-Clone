@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LanguageService {
-  constructor() {}
+  constructor(public translate: TranslateService) {}
 
   avalaibleLanguages = [
     { name: 'Español', code: 'es-ES' },
@@ -16,5 +17,6 @@ export class LanguageService {
 
   public setAppLanguage(language) {
     this.lang$.next(language);
+    this.translate.use(language);
   }
 }

@@ -9,8 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   title = 'The Movie DB Clone';
 
-  constructor(translate: TranslateService) {
-    translate.setDefaultLang('ES');
-    translate.use('ES');
+  constructor(public translate: TranslateService) {
+    translate.setDefaultLang('es-ES');
   }
 }
